@@ -1,70 +1,58 @@
-<<<<<<< HEAD
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+    Intro to your project: 1 Paragraph
+    Using an existing database and tables to show characters and weapons from a game that I play.
+    
+    Explain the features and database schema: 1-3 Paragraphs
+    Database schema: one to one relationship between characters and weapons, i.e., one character can only have one weapon, and each weapon can only be wielded by one character at a time. 
+    Note: There can be duplicates of weapons, so you can in actuality have multiple of the same weapon and many characters can each have one. But in entity relation terms, one to one.
+    
+    Add 4-10 screenshots to demo the user flow
+    N/A
+    
+    If you were unable to complete the assignment, explain what you wanted to do and why you couldn't complete it - 1-2 paragraphs
+    I think the database wasn't being connected to the application. The connection credentials are correct. At first I tried to use
+    the data from the existing table, but then tried to use the database seeder. Still, I got this error:
+// php artisan migrate:refresh --seed
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+//    INFO  Rolling back migrations.
 
-## About Laravel
+//   2024_08_11_205332_create_characters_table ........................ 6ms DONE
+//   2019_12_14_000001_create_personal_access_tokens_table ........... 15ms DONE
+//   2019_08_19_000000_create_failed_jobs_table ...................... 19ms DONE
+//   2014_10_12_100000_create_password_reset_tokens_table ............ 11ms DONE
+//   2014_10_12_000000_create_users_table ............................ 14ms DONE
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+//    INFO  Running migrations.
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+//   2014_10_12_000000_create_users_table ............................ 68ms DONE
+//   2014_10_12_100000_create_password_reset_tokens_table ............ 32ms DONE
+//   2019_08_19_000000_create_failed_jobs_table ...................... 66ms DONE
+//   2019_12_14_000001_create_personal_access_tokens_table ........... 99ms DONE
+//   2024_08_11_205332_create_characters_table ........................ 4ms FAIL
 
-## Learning Laravel
+//    Illuminate\Database\QueryException
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+//   SQLSTATE[42S21]: Column already exists: 1060 Duplicate column name 'id' (Connection: mysql, SQL: alter table `characters` add `id` bigint unsigned not null auto_increment primary key, add `created_at` timestamp null, add `updated_at` timestamp null, add `name` varchar(255) not null, add `rarity` int not null, add `element` varchar(255) not null, add `weapon_class` varchar(255) not null, add `description` text not null)
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+//   at vendor\laravel\framework\src\Illuminate\Database\Connection.php:829
+//     825▕                     $this->getName(), $query, $this->prepareBindings($bindings), $e
+//     826▕                 );
+//     827▕             }
+//     828▕
+//   ➜ 829▕             throw new QueryException(
+//     830▕                 $this->getName(), $query, $this->prepareBindings($bindings), $e
+//     831▕             );
+//     832▕         }
+//     833▕     }
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+//   1   vendor\laravel\framework\src\Illuminate\Database\Connection.php:587
+//       PDOException::("SQLSTATE[42S21]: Column already exists: 1060 Duplicate column name 'id'")
 
-## Laravel Sponsors
-
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
-
-### Premium Partners
-
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
-
-## Contributing
-
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
-
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
-=======
-# HTTP5225-assignment3
->>>>>>> 60892cc9756829b59c5fcb45b80aac8beb701a48
+//   2   vendor\laravel\framework\src\Illuminate\Database\Connection.php:587
+//       PDOStatement::execute()
+    
+    I had the same problem for both of my tables, and so nothing displays.
+    
+    Your thoughts on Laravel and if you wanted to cover anything else in the class to supplement your learnings - 1 paragraph
+    I wish we learned how to use tables/databases with existing data in our projects.
+    
